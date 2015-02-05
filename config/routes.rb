@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'logins/login'
+
+  get 'logins/logout'
+
   get 'students/index'
 
   get 'students/show'
