@@ -1,2 +1,10 @@
-<h1>Teachers#new</h1>
-<p>Find me in app/views/teachers/new.html.erb</p>
+<h1>New Teacher</h1>
+
+<p><%=@teacher.errors.full_messages %></p>
+
+<%= form_for @teacher do |f| %>
+  <p>Name: <%= f.text_field :name %></p>
+  <p>E-mail: <%= f.text_field :email %></p>
+  <p>Password: <%= f.password_field_tag :password %></p>
+  <%= f.submit "Sign Up!" %>
+<% end %>
