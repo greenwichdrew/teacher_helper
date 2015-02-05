@@ -1,3 +1,3 @@
 class Student < ActiveRecord::Base
-  belongs_to {:parents, :teachers}
+  belongs_to {:parent, :teacher}
 end
