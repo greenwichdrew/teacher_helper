@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
   get 'logins/login'
 
+  get 'logins/teacher_login'
+  post 'logins/teacher_login'
+
+  get 'logins/parent_login'
+  post 'logins/parent_login'
+
+  get 'logins/student_login'
+  post 'logins/student_login'
+
   get 'logins/logout'
 
   resources :parents
