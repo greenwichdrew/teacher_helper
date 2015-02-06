@@ -3,8 +3,10 @@
 <%=@parent.errors.full_messages %>
 
 <%= form_for @parent do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_field :email %>
-  <%= f.password_field_tag :password %>
-  <%= f.submit "Sign Up!" %>
+  <p>Name: <%= f.text_field :name %></p>
+  <p>E-mail: <%= f.text_field :email %></p>
+  <p>Password: <%= f.password_field :password %></p>
+  <%= f.submit "New Parent" %>
 <% end %>
+
+<%= link_to 'Back', parents_path %>

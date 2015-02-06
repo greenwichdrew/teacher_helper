@@ -6,5 +6,12 @@
   <p>Name: <%= f.text_field :name %></p>
   <p>E-mail: <%= f.text_field :email %></p>
   <p>Password: <%= f.password_field :password %></p>
-  <%= f.submit "Sign Up!" %>
+
+  <div class="field">
+   <%= f.label :teacher_id %><br>
+   <%= f.collection_select :teacher_id, Teacher.all, :id, :name, :include_blank=> true %><br>
+ </div>
+
+  <%= f.submit "New Student" %>
 <% end %>
+<%= link_to 'Back', parents_path %>

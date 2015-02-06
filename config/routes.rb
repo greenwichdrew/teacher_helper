@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'grades/index'
+
+  get 'grades/show'
+
+  get 'grades/edit'
+
+  get 'grades/create'
+
+  get 'grades/update'
+
+  get 'grades/destroy'
+
+  get 'grades/new'
+
   get 'logins/login'
   post 'logins/login'
   get 'logins/teacher_login'

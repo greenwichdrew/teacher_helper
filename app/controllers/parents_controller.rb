@@ -2,7 +2,8 @@ class ParentsController < ApplicationController
   before_action :check_logged_in, only: [:index, :show, :destroy, :edit]
 
   def index
-    @parents = Parent.all
+    @parents = Teacher.find_by_id(session[:teacher_id]).parents
+    @students = Teacher.find_by_id(session[:teacher_id]).students
   end
 
   def show
@@ -42,7 +43,9 @@ class ParentsController < ApplicationController
   end
 
   private def parent_params
+    # parent = Parent.new
     params.require(:parent).permit(:name, :password, :email, :teacher_id, :id)
+    # parent.teacher_id = session[:id]
   end
 
   private def check_logged_in
