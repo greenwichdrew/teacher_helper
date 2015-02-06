@@ -1,0 +1,14 @@
+
+
+<%= form_for @grade do |f| %>
+  <p>Date: <%= f.date_select :date %></p>
+  <p>Subject: <%= f.text_field :subject %></p>
+  <p>Assignment: <%= f.text_field :assignment %></p>
+
+  <div class="field">
+   <%= f.label :student_id %><br>
+   <%= f.collection_select :student_id, Student.all, :id, :name, :include_blank=> true %><br>
+ </div>
+
+  <%= f.submit "New Parent" %>
+<% end %>

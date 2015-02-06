@@ -1,11 +1,12 @@
 class ParentsController < ApplicationController
   before_action :check_logged_in, only: [:index, :show, :destroy, :edit]
-  before_action :set_parent
+  before_action :set_parent, except: [:index, :create, :new]
 
   def index
     @teacher = Teacher.find_by_id(session[:teacher_id])
     @parents = @teacher.parents
     @students = @teacher.students
+    @grades = Grade.all
   end
 
   def show
