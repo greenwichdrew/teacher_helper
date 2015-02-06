@@ -1,10 +1,11 @@
 <h1>New Teacher</h1>
-
-<p><%=@teacher.errors.full_messages %></p>
+<% unless @teacher.errors.empty? %>
+  <%= @teacher.errors.full_messages %>
+<% end %>
 
 <%= form_for @teacher do |f| %>
   <p>Name: <%= f.text_field :name %></p>
   <p>E-mail: <%= f.text_field :email %></p>
-  <p>Password: <%= f.password_field_tag :password %></p>
+  <p>Password: <%= f.password_field :password %></p>
   <%= f.submit "Sign Up!" %>
 <% end %>
