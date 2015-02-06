@@ -1,5 +1,5 @@
 class ParentsController < ApplicationController
-  # before_action :check_logged_in
+  before_action :check_logged_in, only: [:index, :show, :destroy, :edit]
 
   def index
     @parents = Parent.all
@@ -9,17 +9,26 @@ class ParentsController < ApplicationController
   end
 
   def new
-    @parent = Parent.new
+    if session[:teacher_id]
+      @parent = Parent.new
+    else
+      flash[:notice] = "WARNING. YOU ARE NOT A TEACHER. YOU MAY NOT ADD ANY INFORMATION."
+      redirect_to logins_login_path
+    end
   end
 
   def create
-    @parent = Parent.new(parent_params)
+    if session[:teacher_id]
+      @parent = Parent.new(parent_params)
 
-    if @parent.save
-      flash[:notice] = "Parent saved successfully."
-      redirect_to parents_path
+      if @parent.save
+        flash[:notice] = "Parent saved successfully."
+        redirect_to parents_path
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to logins_login_path
     end
   end
 
@@ -33,7 +42,7 @@ class ParentsController < ApplicationController
   end
 
   private def parent_params
-    params.require(:parent).permit(:name, :password, :email, :teacher_id)
+    params.require(:parent).permit(:name, :password, :email, :teacher_id, :id)
   end
 
   private def check_logged_in

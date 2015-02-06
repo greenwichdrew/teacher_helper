@@ -1,8 +1,7 @@
 <h1>Welcome student!</h1>
 
-<p><%= form_tag logins_login_path do %></p>
+<p><%= form_for(:login, url: logins_student_login_path) do %></p>
   <%= text_field_tag :email, nil, placeholder: "Email" %>
   <%= password_field_tag :password, nil, placeholder: "Password" %>
   <%= submit_tag "Login" %>
 <% end %>
-<p><%= link_to "New Student", new_student_path %></p>

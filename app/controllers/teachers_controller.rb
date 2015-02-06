@@ -1,8 +1,10 @@
 class TeachersController < ApplicationController
-  # before_action :check_logged_in 
+  before_action :check_logged_in, only: [:index, :show, :destroy, :edit]
 
   def index
-    @teachers = Teacher.all
+
+    @parents = Teacher.find_by_id(params[:id]).parents
+    @students = Teacher.find_by_id(params[:id]).students
   end
 
   def show
@@ -33,7 +35,7 @@ class TeachersController < ApplicationController
   end
 
   private def teacher_params
-    params.require(:teacher).permit(:name, :email, :password)
+    params.require(:teacher).permit(:name, :email, :password, :id)
   end
 
   private def check_logged_in

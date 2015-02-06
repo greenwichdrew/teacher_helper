@@ -18,7 +18,7 @@ class LoginsController < ApplicationController
   def parent_login
     if request.post?
       parent = Parent.find_by_email(params[:email])
-      if parent && teacher.authenticate(params[:password])
+      if parent && parent.authenticate(params[:password])
         session[:parent_id] = parent.id
         flash[:notice] = "Welcome!"
         redirect_to parents_path
@@ -31,7 +31,7 @@ class LoginsController < ApplicationController
   def student_login
     if request.post?
       student = Student.find_by_email(params[:email])
-      if student && student.authenticate(params[:password])
+      if student && parent.authenticate(params[:password])
         session[:student_id] = student.id
         flash[:notice] = "Welcome!"
         redirect_to parents_path

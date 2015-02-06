@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  # before_action :check_logged_in
+  before_action :check_logged_in, only: [:index, :show, :destroy, :edit]
 
   def index
     @students = Student.all
@@ -33,7 +33,7 @@ class StudentsController < ApplicationController
   end
 
   private def student_params
-    params.require(:student).permit(:name, :email, :teacher_id, :parent_id, :password, :grades)
+    params.require(:student).permit(:name, :email, :teacher_id, :parent_id, :password, :grades, :id)
   end
 
   private def check_logged_in

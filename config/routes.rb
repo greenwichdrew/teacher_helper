@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'logins/login'
-
+  post 'logins/login'
   get 'logins/teacher_login'
   post 'logins/teacher_login'
 
