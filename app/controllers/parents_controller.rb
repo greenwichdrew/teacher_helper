@@ -1,9 +1,11 @@
 class ParentsController < ApplicationController
   before_action :check_logged_in, only: [:index, :show, :destroy, :edit]
+  before_action :set_parent
 
   def index
-    @parents = Teacher.find_by_id(session[:teacher_id]).parents
-    @students = Teacher.find_by_id(session[:teacher_id]).students
+    @teacher = Teacher.find_by_id(session[:teacher_id])
+    @parents = @teacher.parents
+    @students = @teacher.students
   end
 
   def show
@@ -37,6 +39,7 @@ class ParentsController < ApplicationController
   end
 
   def update
+    redirect_to parents_path
   end
 
   def destroy
@@ -50,6 +53,10 @@ class ParentsController < ApplicationController
 
   private def check_logged_in
     redirect_to logins_login_path unless session[:teacher_id]
+  end
+
+  private def set_parent
+    @parent = Parent.find(params[:id])
   end
 
 end

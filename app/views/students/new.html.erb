@@ -1,17 +1,4 @@
 <h1>New Student</h1>
 
-<%=@student.errors.full_messages %>
-
-<%= form_for @student do |f| %>
-  <p>Name: <%= f.text_field :name %></p>
-  <p>E-mail: <%= f.text_field :email %></p>
-  <p>Password: <%= f.password_field :password %></p>
-
-  <div class="field">
-   <%= f.label :teacher_id %><br>
-   <%= f.collection_select :teacher_id, Teacher.all, :id, :name, :include_blank=> true %><br>
- </div>
-
-  <%= f.submit "New Student" %>
-<% end %>
+<%= render 'form' %>
 <%= link_to 'Back', parents_path %>

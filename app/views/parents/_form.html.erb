@@ -1,0 +1,16 @@
+<% unless @parent.errors.full_messages.empty? %>
+  <%=@parent.errors.full_messages %>
+<% end %>
+
+<%= form_for @parent do |f| %>
+  <p>Name: <%= f.text_field :name %></p>
+  <p>E-mail: <%= f.text_field :email %></p>
+  <p>Password: <%= f.password_field :password %></p>
+
+  <div class="field">
+   <%= f.label :teacher_id %><br>
+   <%= f.collection_select :teacher_id, Teacher.all, :id, :name, :include_blank=> true %><br>
+ </div>
+
+  <%= f.submit "New Parent" %>
+<% end %>
