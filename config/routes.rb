@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  root 'logins#login'
   get 'logins/login'
   post 'logins/login'
   get 'logins/teacher_login'

@@ -6,8 +6,6 @@ class StudentsController < ApplicationController
       @student = Student.find_by_id(session[:student_id])
     elsif session[:parent_id]
       @student = Parent.find_by_id(session[:parent_id]).students
-    elsif session[:teacher_id]
-      @student = Student.all
     end
   end
 
