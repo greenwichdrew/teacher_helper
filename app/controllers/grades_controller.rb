@@ -54,7 +54,4 @@ class GradesController < ApplicationController
     redirect_to logins_login_path unless session[:teacher_id]
   end
 
-  private def set_grade
-    @grade = grade.find(params[:id])
-  end
 end
