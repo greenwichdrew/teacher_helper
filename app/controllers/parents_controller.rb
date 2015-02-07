@@ -40,10 +40,20 @@ class ParentsController < ApplicationController
   end
 
   def update
-    redirect_to parents_path
+    if @parent.update(parent_params)
+      redirect_to @parent, notice: 'Parent updated.'
+    else
+      render :edit
+    end
+  end
+
+  def show
+    redirect_to edit_parent_path(@parent)
   end
 
   def destroy
+    @parent.destroy
+    redirect_to parents_path notice: 'Parent deleted.'
   end
 
   private def parent_params

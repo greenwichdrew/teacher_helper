@@ -46,8 +46,8 @@ class GradesController < ApplicationController
 
   private def grade_params
     # grade = grade.new
-    params.require(:grade).permit(:date, :subject, :assignment, :student_id, :letter)
-    # grade.teacher_id = session[:id]
+    # params.require(:grade).permit(:date, :subject, :assignment, :student_id, :letter)
+    # # grade.teacher_id = session[:id]
   end
 
   private def check_logged_in
