@@ -34,11 +34,13 @@ class TeachersController < ApplicationController
   def destroy
   end
 
-  # private def teacher_params
-  #   params.require(:teacher).permit(:name, :email, :password, :id)
-  # end
+  private
 
-  private def check_logged_in
+  def teacher_params
+    params.require(:teacher).permit(:name, :email, :password, :id)
+  end
+
+  def check_logged_in
     redirect_to logins_login_path unless session[:teacher_id]
   end
 

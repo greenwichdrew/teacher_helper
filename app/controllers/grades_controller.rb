@@ -44,11 +44,13 @@ class GradesController < ApplicationController
   def destroy
   end
 
-  # private def grade_params
-  #   params.require(:grade).permit(:date, :subject, :assignment, :student_id, :letter)
-  # end
+  private
 
-  private def check_logged_in
+  def grade_params
+    params.require(:grade).permit(:date, :subject, :assignment, :student_id, :letter)
+  end
+
+  def check_logged_in
     redirect_to logins_login_path unless session[:teacher_id]
   end
 

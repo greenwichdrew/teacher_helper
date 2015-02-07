@@ -62,11 +62,13 @@ class ParentsController < ApplicationController
   #   # parent.teacher_id = session[:id]
   # end
 
-  private def check_logged_in
+  private
+
+  def check_logged_in
     redirect_to logins_login_path unless session[:teacher_id]
   end
 
-  private def set_parent
+  def set_parent
     @parent = Parent.find(params[:id])
   end
 
