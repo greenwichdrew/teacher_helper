@@ -19,7 +19,7 @@ class TeachersController < ApplicationController
 
     if @teacher.save
       flash[:notice] = "Teacher saved successfully."
-      redirect_to teachers_path
+      redirect_to parents_path
     else
       render :new
     end
