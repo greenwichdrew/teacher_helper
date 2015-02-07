@@ -56,11 +56,11 @@ class ParentsController < ApplicationController
     redirect_to parents_path notice: 'Parent deleted.'
   end
 
-  private def parent_params
-    # parent = Parent.new
-    params.require(:parent).permit(:name, :password, :email, :teacher_id, :id)
-    # parent.teacher_id = session[:id]
-  end
+  # private def parent_params
+  #   # parent = Parent.new
+  #   params.require(:parent).permit(:name, :password, :email, :teacher_id, :id)
+  #   # parent.teacher_id = session[:id]
+  # end
 
   private def check_logged_in
     redirect_to logins_login_path unless session[:teacher_id]

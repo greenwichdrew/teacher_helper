@@ -43,9 +43,9 @@ class StudentsController < ApplicationController
   def destroy
   end
 
-  private def student_params
-    params.require(:student).permit(:name, :email, :teacher_id, :parent_id, :password, :grades, :id)
-  end
+  # private def student_params
+  #   params.require(:student).permit(:name, :email, :teacher_id, :parent_id, :password, :grades, :id)
+  # end
 
   private def check_logged_in
     redirect_to logins_login_path unless session[:teacher_id]
