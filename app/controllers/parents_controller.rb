@@ -3,10 +3,10 @@ class ParentsController < ApplicationController
   before_action :set_parent, except: [:index, :create, :new]
 
   def index
+    redirect_to logins_login path unless session[:teacher_id]
     @teacher = Teacher.find_by_id(session[:teacher_id])
     @parents = @teacher.parents
     @students = @teacher.students
-    @grades = Grade.all
   end
 
   def show

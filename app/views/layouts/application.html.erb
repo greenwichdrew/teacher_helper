@@ -10,6 +10,7 @@
   <p><%= notice %></p>
   <% if session[:teacher_id] || session[:student_id] || session[:parent_id] %>
     <%= link_to "Log Out", logins_logout_path %>
+    
   <% end %>
 
 <%= yield %>

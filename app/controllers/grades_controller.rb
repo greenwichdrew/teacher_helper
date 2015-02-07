@@ -38,7 +38,7 @@ class GradesController < ApplicationController
   end
 
   def update
-    redirect_to grades_path
+    redirect_to parents_path
   end
 
   def destroy
@@ -46,7 +46,7 @@ class GradesController < ApplicationController
 
   private def grade_params
     # grade = grade.new
-    params.require(:grade).permit(:date, :subject, :assignment, :student_id, :id)
+    params.require(:grade).permit(:date, :subject, :assignment, :student_id, :id, :letter)
     # grade.teacher_id = session[:id]
   end
 

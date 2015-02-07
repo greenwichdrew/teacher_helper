@@ -1,8 +1,14 @@
 class StudentsController < ApplicationController
-  before_action :check_logged_in, only: [:index, :show, :destroy, :edit]
+  before_action :check_logged_in, only: [:show, :destroy, :edit]
 
   def index
-    @students = Student.all
+    if session[:student_id]
+      @student = Student.find_by_id(session[:student_id])
+    elsif session[:parent_id]
+      @student = Parent.find_by_id(session[:parent_id]).students
+    elsif session[:teacher_id]
+      @student = Student.all
+    end
   end
 
   def show
@@ -17,13 +23,15 @@ class StudentsController < ApplicationController
 
     if @student.save
       flash[:notice] = "Student saved successfully."
-      redirect_to students_path
+      redirect_to parents_path
     else
       render :new
     end
   end
 
   def edit
+    @student = Student.find(params[:id])
+    render :edit
   end
 
   def update
@@ -42,7 +50,7 @@ class StudentsController < ApplicationController
   end
 
   private def check_logged_in
-    redirect_to logins_login_path unless session[:student_id]
+    redirect_to logins_login_path unless session[:teacher_id]
   end
 
 end

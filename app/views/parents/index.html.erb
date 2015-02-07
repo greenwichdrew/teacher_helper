@@ -3,6 +3,12 @@
 <h2>Students</h2>
 <% @students.each do |student|%>
   <p><%= link_to "#{student.name}", edit_student_path(student) %></p>
+  <% student.grades.each do |grade| %>
+    <%= grade.date %>
+    <%= grade.subject %>
+    <%= grade.assignment %>
+    <%= grade.letter %>
+  <% end %>
 <% end %>
 
 <h2>Parents</h2>
